@@ -21,14 +21,16 @@ function processData(input) {
     const variable = (text) => firstLower(camelCase(text))
     const method = (text) => addBrakets(firstLower(camelCase(text)))
 
+    let result = []
     arrInput.forEach(input => {
         const operation = input.slice(0, 1)
         const type = input.slice(2, 3)
-        const target = input.slice(4)
-    
-        if (operation == 'S') return console.log(split(target))
-        if (type == 'M') return console.log(combine(method(target)))
-        if (type == 'V') return console.log(combine(variable(target)))
-        if (type == 'C') return console.log(combine(camelCase(target)))
+        const target = input.slice(4).replace('\r', '')
+
+        if (operation == 'S') return result.push(split(target))
+        if (type == 'M') return result.push(combine(method(target)))
+        if (type == 'V') return result.push(combine(variable(target)))
+        if (type == 'C') return result.push(combine(camelCase(target)))
     })
+        console.log(result.join('\r\n'))
 }
