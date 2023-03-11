@@ -1,0 +1,11 @@
+// https://www.hackerrank.com/challenges/three-month-preparation-kit-the-birthday-bar/problem
+
+function birthday(s, d, m) {
+    let waysCount = 0
+    s.forEach((item, index) => {
+        const segment = [...s].splice(index, m)
+        const segmentSum = segment.reduce((a, b) => a + b)
+        waysCount = segmentSum == d ? waysCount + 1 : waysCount
+    })
+    return waysCount
+}
